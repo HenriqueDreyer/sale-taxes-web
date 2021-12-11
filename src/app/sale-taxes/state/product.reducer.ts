@@ -1,3 +1,5 @@
+import { state } from "@angular/animations";
+import { act } from "@ngrx/effects";
 import { Action, createReducer, on } from "@ngrx/store";
 import { AppState } from "./app.state";
 import { PRODUCT_ACTIONS } from "./product.actions";
@@ -18,12 +20,12 @@ const reducer = createReducer(
     ...state,
     myCart: [...state.myCart, action.product]
   })),
-  on(PRODUCT_ACTIONS.removeProductToCartSuccess, (state, action) => ({
+  on(PRODUCT_ACTIONS.removeProductsToCartSuccess, (state, action) => ({
     ...state,
-    myCart: state.myCart.splice(action.index, 1)
+    myCart: state.myCart.filter((value, index) =>{ index !== action.index })
   }))
 );
 
-export function productReducer(state: any, action: any): any {
+export function productReducer(state: AppState, action: Action): any {
   return reducer(state, action);
 }

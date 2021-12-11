@@ -4,37 +4,27 @@ import { Product } from "src/app/shared/entities/product.entity";
 
 export const addProductToCart = createAction(
   ACTION.ADD_PRODUCT_CART,
-  props<{ product: Product; }>()
+  props<{ product: Product }>()
 );
 
 export const addProductToCartSuccess = createAction(
   ACTION.ADD_PRODUCT_CART_SUCCESS,
-  props<{ product: Product; }>()
+  props<{ product: Product }>()
 );
 
-export const addProductToCartError = createAction(
-  ACTION.ADD_PRODUCT_CART_ERROR,
-  props<{ errorMessage: any; }>()
-);
-
-export const removeProductToCart = createAction(
+export const removeProductsToCart = createAction(
   ACTION.REMOVE_PRODUCT_CART,
-  props<{ product: Product; }>()
+  props<{ index: number }>()
 );
 
-export const removeProductToCartSuccess = createAction(
+export const removeProductsToCartSuccess = createAction(
   ACTION.REMOVE_PRODUCT_CART_SUCCESS,
   props<{ index: number }>()
 );
 
-export const removeProductToCartError = createAction(
-  ACTION.REMOVE_PRODUCT_CART_ERROR,
-  props<{ errorMessage: any; }>()
-);
-
 export const findProductsList = createAction(
   ACTION.LOAD_PRODUCTS,
-  props<{ name?: string; isImported?: string }>()
+  props<{ name?: string, isImported?: string }>()
 );
 
 export const findProductsListSuccess = createAction(
@@ -51,10 +41,8 @@ export const PRODUCT_ACTIONS = {
   findProductsListError,
   findProductsListSuccess,
   findProductsList,
-  removeProductToCartError,
-  removeProductToCartSuccess,
-  removeProductToCart,
+  removeProductsToCartSuccess,
+  removeProductsToCart,
   addProductToCartSuccess,
-  addProductToCartError,
   addProductToCart
 };

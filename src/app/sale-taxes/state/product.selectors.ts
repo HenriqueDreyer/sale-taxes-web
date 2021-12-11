@@ -1,5 +1,6 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { Action, createFeatureSelector, createSelector } from "@ngrx/store";
 import { REDUCER } from "src/app/shared/constants/constants";
+import { Product } from "src/app/shared/entities/product.entity";
 import { AppState } from "./app.state";
 
 export const getAppState = createFeatureSelector<AppState>(REDUCER.PRODUCTS);

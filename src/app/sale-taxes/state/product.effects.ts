@@ -38,4 +38,22 @@ export class ExportProductEffects {
       )
     )
   );
+
+  addProductToCart$ = createEffect( () =>
+    this.actions$.pipe(
+      ofType(PRODUCT_ACTIONS.addProductToCart),
+      switchMap((action) =>
+        of(PRODUCT_ACTIONS.addProductToCartSuccess({ product: action.product }))
+      )
+    )
+  );
+
+  removeProductCart$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(PRODUCT_ACTIONS.removeProductsToCart),
+        switchMap((action) =>
+          of(PRODUCT_ACTIONS.removeProductsToCartSuccess({ index: action.index }))
+        )
+      )
+  );
 }

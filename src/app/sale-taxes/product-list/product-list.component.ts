@@ -18,7 +18,6 @@ import { selectProductList } from '../state/product.selectors';
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  @Output() myCart = new EventEmitter();
   dataSource: Array<Product> = [];
 
   subscribers: Array<Subscription> = [];
@@ -31,10 +30,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscribers.forEach((sub) => sub.unsubscribe());
-  }
-
-  addProductCart(value: Product): void {
-    this.myCart.emit(value);
   }
 
   private loadProductsFromStore(): void {

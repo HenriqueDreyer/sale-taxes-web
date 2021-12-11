@@ -11,10 +11,6 @@ import { PRODUCT_ACTIONS } from '../state/product.actions';
   styleUrls: ['./sale-taxes.component.scss'],
 })
 export class SaleTaxesComponent implements OnInit {
-  myCart: Array<Product> = [];
-  products: Array<Product> = [];
-
-  numberItensSelected: number = this.myCart.length;
 
   constructor(
     private store: Store<AppState>,
@@ -23,19 +19,6 @@ export class SaleTaxesComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadProductsFromApi();
-  }
-
-  onAddProductToCart(value: Product): void {
-    console.log(`O item ${value.name} adicionado no carrinho`);
-    this.myCart.push(value);
-  }
-
-  onCheckout(value: Product): void {
-    console.log(value);
-  }
-
-  onDeleteItemCart(value: Product): void {
-    console.log(`${value.name} deletado`);
   }
 
   private loadProductsFromApi(): void {
