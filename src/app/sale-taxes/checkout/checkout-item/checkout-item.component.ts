@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Product } from 'src/app/shared/entities/product.entity';
+import { AppState } from '../../state/app.state';
+import { PRODUCT_ACTIONS } from '../../state/product.actions';
 
 @Component({
   selector: 'app-checkout-item',
@@ -7,21 +10,22 @@ import { Product } from 'src/app/shared/entities/product.entity';
   styleUrls: ['./checkout-item.component.scss']
 })
 export class CheckoutItemComponent implements OnInit {
-  @Output() deleteItem = new EventEmitter();
-  @Input() item!: Product;
+  @Input() product!: Product;
+  @Input() index!: number;
 
   productLocale: string = '';
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    if(this.item) {
-      this.productLocale = this.item.isImported == 'S'? 'Imported' : 'National';
+    if(this.product) {
+      this.productLocale = this.product.isImported == 'S'? 'Imported' : 'National';
     }
   }
 
   onDeleteItem(): void {
-    this.deleteItem.emit(this.item);
+    console.log(`Remove item from index ${this.index}`);
+      this.store.dispatch(PRODUCT_ACTIONS.removeProductsToCart({ index: this.index }));
   }
 
 }

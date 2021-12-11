@@ -14,8 +14,8 @@
     <tbody>
       <div class="container">
         <div class="row">
-          <div *ngFor="let item of cartItens" class="col-12">
-            <app-checkout-item (deleteItem)="onDeleteItemClick($event)"></app-checkout-item>
+          <div *ngFor="let item of cartItens; let idx = index" class="col-12">
+            <app-checkout-item [product]="item" [index]="idx"></app-checkout-item>
             <br />
           </div>
         </div>
