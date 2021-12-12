@@ -13,7 +13,8 @@ import { selectCheckout, selectMyCart } from '../../state/product.selectors';
 })
 export class ProceedCheckoutModalComponent implements OnInit, OnDestroy {
   products: ProceedProduct[] = [];
-  total: number = 0.0;
+  totalPay: number = 0.0;
+  totalTax: number = 0.0;
 
   subscribers: Array<Subscription> = [];
 
@@ -30,7 +31,8 @@ export class ProceedCheckoutModalComponent implements OnInit, OnDestroy {
   close(): void {
     this.store.dispatch(PRODUCT_ACTIONS.removeProductsToCart());
     this.store.dispatch(PRODUCT_ACTIONS.removeCheckout());
-    this.total = 0.0;
+    this.totalPay = 0.0;
+    this.totalTax = 0.0;
 
   }
 
@@ -47,9 +49,14 @@ export class ProceedCheckoutModalComponent implements OnInit, OnDestroy {
   }
 
   private calculateTotal(): void {
+    let valueToPay = 0;
+    let valueTax = 0;
     this.products.forEach((product) => {
-      this.total = this.total + product.total
+      valueToPay += product.total;
+      valueTax += product.basicTax + product.additionalTax;
     });
+    this.totalTax = Number((Math.ceil(valueTax*20)/20).toFixed(2));
+    this.totalPay = valueToPay;
   }
 
 }

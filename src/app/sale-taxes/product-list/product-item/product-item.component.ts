@@ -45,10 +45,9 @@ export class ProductItemComponent implements OnInit, OnDestroy {
   private calculateTotal(price: number, productType: ProductType, isImported: string): number {
     const basicTax = this.basicTax(productType);
     const additionalTax = this.additionalTax(isImported);
-    if(basicTax == 0 && additionalTax == 0) return price;
 
-    const total = (basicTax + additionalTax) * price + price;
-    return Number(Math.ceil((total*20 - 0.05)/20).toFixed(2));
+    return ((basicTax + additionalTax) * price) + price;
+   // return Number(Math.ceil((total*20 - 0.05)/20).toFixed(2));
   }
 
   private basicTax(productType: ProductType): number {
