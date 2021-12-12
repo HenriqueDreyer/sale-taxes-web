@@ -11,7 +11,7 @@ Foram utilizadas as tecnologias:
 ## 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
-* Ter instalado e ambiente configurado o `Node`
+* Ter instalado e ambiente configurado o `Node` versão 16.x
 * Ter instalado o `Angular CLI`
 
 ## 🚀 Instalando
