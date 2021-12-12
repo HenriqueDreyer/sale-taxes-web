@@ -30,11 +30,11 @@
               </tbody>
               <tfoot class="table-dark table-borderless">
                 <tr>
-                  <td></td>
-                  <td></td>
+                  <td>Total Tax</td>
+                  <td>{{ totalTax | percent }}</td>
                   <td></td>
                   <td>TOTAL</td>
-                  <td>{{ total | currency: 'BRL' }}</td>
+                  <td>{{ totalPay | currency: 'BRL' }}</td>
                 </tr>
               </tfoot>
             </table>
