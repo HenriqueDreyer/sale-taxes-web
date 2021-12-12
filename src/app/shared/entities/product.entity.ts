@@ -7,6 +7,16 @@ export interface Product {
   isImported: string;
 }
 
+export interface ProceedProduct {
+  id: number;
+  name: string;
+  price: number;
+  isImported: string;
+  basicTax: number;
+  additionalTax: number;
+  total: number;
+}
+
 export enum ProductType {
   BOOK = 1,
   FOOD = 2,

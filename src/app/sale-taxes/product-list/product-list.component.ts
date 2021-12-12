@@ -1,22 +1,45 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/entities/product.entity';
+import { AppState } from '../state/app.state';
+import { selectProductList } from '../state/product.selectors';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  styleUrls: ['./product-list.component.scss'],
 })
-export class ProductListComponent implements OnInit {
-  @Output() myCart = new EventEmitter();
-  @Input() dataSource!: Array<Product>;
+export class ProductListComponent implements OnInit, OnDestroy {
+  dataSource: Array<Product> = [];
 
-  constructor() { }
+  subscribers: Array<Subscription> = [];
+
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
+    this.loadProductsFromStore();
   }
 
-  addProductCart(value: Product): void {
-    this.myCart.emit(value);
+  ngOnDestroy(): void {
+    this.subscribers.forEach((sub) => sub.unsubscribe());
   }
 
+  private loadProductsFromStore(): void {
+    const sub = this.store
+      .pipe(select(selectProductList))
+      .subscribe((source: Product[]) => {
+        if (source) {
+          this.dataSource = source;
+        }
+      });
+    this.subscribers.push(sub);
+  }
 }
