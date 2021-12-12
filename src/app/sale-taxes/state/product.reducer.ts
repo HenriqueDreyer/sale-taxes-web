@@ -22,8 +22,20 @@ const reducer = createReducer(
   })),
   on(PRODUCT_ACTIONS.removeProductsToCartSuccess, (state, action) => ({
     ...state,
-    myCart: state.myCart.filter((value, index) =>{ index !== action.index })
-  }))
+    myCart: initialState.myCart
+  })),
+  on(PRODUCT_ACTIONS.removeCheckoutSuccess, (state, action) => ({
+    ...state,
+    checkout: initialState.checkout
+  })),
+  on(PRODUCT_ACTIONS.loadCheckoutSuccess, (state, action) => ({
+    ...state,
+    checkout: state.checkout
+  })),
+  on(PRODUCT_ACTIONS.addItemToCheckoutSuccess, (state, action) => ({
+    ...state,
+    checkout: [...state.checkout, action.product]
+  })),
 );
 
 export function productReducer(state: AppState, action: Action): any {

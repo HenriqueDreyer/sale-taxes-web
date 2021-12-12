@@ -1,0 +1,49 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Proceed Checkout</h5>
+        <button type="button" (click)="close()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="col-12">
+          <div class="row">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Product</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Basic Tax</th>
+                  <th scope="col">Additonal Tax</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of products">
+                  <td>{{ product.name }}</td>
+                  <td>{{ product.price | currency: 'BRL'}}</td>
+                  <td>{{ product.basicTax | percent }}</td>
+                  <td>{{ product.additionalTax | percent }}</td>
+                  <td>{{ product.total | currency: 'BRL' }}</td>
+                </tr>
+              </tbody>
+              <tfoot class="table-dark table-borderless">
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>TOTAL</td>
+                  <td>{{ total | currency: 'BRL' }}</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="close()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

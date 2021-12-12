@@ -23,9 +23,4 @@ export class CheckoutItemComponent implements OnInit {
     }
   }
 
-  onDeleteItem(): void {
-    console.log(`Remove item from index ${this.index}`);
-      this.store.dispatch(PRODUCT_ACTIONS.removeProductsToCart({ index: this.index }));
-  }
-
 }

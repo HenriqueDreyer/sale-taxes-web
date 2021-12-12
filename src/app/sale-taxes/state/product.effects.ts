@@ -39,7 +39,7 @@ export class ExportProductEffects {
     )
   );
 
-  addProductToCart$ = createEffect( () =>
+  addProductToCart$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PRODUCT_ACTIONS.addProductToCart),
       switchMap((action) =>
@@ -49,11 +49,34 @@ export class ExportProductEffects {
   );
 
   removeProductCart$ = createEffect(() =>
-      this.actions$.pipe(
-        ofType(PRODUCT_ACTIONS.removeProductsToCart),
-        switchMap((action) =>
-          of(PRODUCT_ACTIONS.removeProductsToCartSuccess({ index: action.index }))
-        )
+    this.actions$.pipe(
+      ofType(PRODUCT_ACTIONS.removeProductsToCart),
+      switchMap((action) => of(PRODUCT_ACTIONS.removeProductsToCartSuccess()))
+    )
+  );
+
+  removeCheckout$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PRODUCT_ACTIONS.removeCheckout),
+      switchMap((action) => of(PRODUCT_ACTIONS.removeCheckoutSuccess()))
+    )
+  );
+
+  addCheckoutProceed$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PRODUCT_ACTIONS.loadCheckout),
+      switchMap((action) =>
+        of(PRODUCT_ACTIONS.loadCheckoutSuccess({ products: action.products }))
       )
+    )
+  );
+
+  addProductToCheckout$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PRODUCT_ACTIONS.addItemToCheckout),
+      switchMap((action) =>
+        of(PRODUCT_ACTIONS.addItemToCheckoutSuccess({ product: action.product }))
+      )
+    )
   );
 }
