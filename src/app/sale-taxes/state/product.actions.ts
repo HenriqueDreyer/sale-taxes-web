@@ -1,6 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { ACTION } from "src/app/shared/constants/constants";
-import { Product } from "src/app/shared/entities/product.entity";
+import { ProceedProduct, Product } from "src/app/shared/entities/product.entity";
 
 export const addProductToCart = createAction(
   ACTION.ADD_PRODUCT_CART,
@@ -35,6 +35,34 @@ export const findProductsListError = createAction(
   props<{ errorMessage: any }>()
 );
 
+export const loadCheckout = createAction(
+  ACTION.LOAD_CHECKOUT,
+  props<{ products: ProceedProduct[] }>()
+);
+
+export const loadCheckoutSuccess = createAction(
+  ACTION.LOAD_CHECKOUT_SUCCESS,
+  props<{ products: ProceedProduct[] }>()
+);
+
+export const removeCheckout = createAction(
+  ACTION.REMOVE_CHECKOUT
+);
+
+export const removeCheckoutSuccess = createAction(
+  ACTION.REMOVE_CHECKOUT_SUCCESS
+);
+
+export const addItemToCheckout = createAction(
+  ACTION.ADD_CHECKOUT,
+  props<{ product: ProceedProduct }>()
+);
+
+export const addItemToCheckoutSuccess = createAction(
+  ACTION.ADD_CHECKOUT_SUCCESS,
+  props<{ product: ProceedProduct }>()
+);
+
 export const PRODUCT_ACTIONS = {
   findProductsListError,
   findProductsListSuccess,
@@ -42,5 +70,11 @@ export const PRODUCT_ACTIONS = {
   removeProductsToCartSuccess,
   removeProductsToCart,
   addProductToCartSuccess,
-  addProductToCart
+  addProductToCart,
+  loadCheckout,
+  loadCheckoutSuccess,
+  removeCheckout,
+  removeCheckoutSuccess,
+  addItemToCheckout,
+  addItemToCheckoutSuccess,
 };

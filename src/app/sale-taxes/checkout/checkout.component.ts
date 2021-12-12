@@ -3,6 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/entities/product.entity';
 import { AppState } from '../state/app.state';
+import { PRODUCT_ACTIONS } from '../state/product.actions';
 import { selectMyCart } from '../state/product.selectors';
 
 @Component({
@@ -32,6 +33,11 @@ export class CheckoutComponent implements OnInit, OnDestroy, OnChanges {
 
   onCheckoutClick(): void {
     console.log('FINALIZAR');
+  }
+
+  clean(): void {
+    this.store.dispatch(PRODUCT_ACTIONS.removeProductsToCart());
+    this.store.dispatch(PRODUCT_ACTIONS.removeCheckout());
   }
 
   private loadCartFromStore(): void {

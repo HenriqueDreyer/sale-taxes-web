@@ -23,8 +23,4 @@ export class CheckoutItemComponent implements OnInit {
     }
   }
 
-  onDeleteItem(): void {
-    this.store.dispatch(PRODUCT_ACTIONS.removeProductsToCart());
-  }
-
 }

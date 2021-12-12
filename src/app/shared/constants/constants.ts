@@ -8,6 +8,12 @@ export const ACTION = {
   LOAD_PRODUCTS: '[Products] Load Products',
   LOAD_PRODUCTS_SUCCESS: '[Products] Load Products Success',
   LOAD_PRODUCTS_ERROR: '[Products] Load Products Error',
+  LOAD_CHECKOUT: '[Checkout] Load Checkout',
+  LOAD_CHECKOUT_SUCCESS: '[Checkout] Load Checkout Success',
+  REMOVE_CHECKOUT: '[Checkout] Remove Checkout',
+  REMOVE_CHECKOUT_SUCCESS: '[Checkout] Remove Checkout Success',
+  ADD_CHECKOUT: 'Add Checkout',
+  ADD_CHECKOUT_SUCCESS: 'Add Checkout Success',
 }
 
 export const REDUCER = {
