@@ -2,14 +2,13 @@
   <div class="container">
     <div class="row justify-content-end" style="margin-left: -20px; margin-bottom: 10px;">
       <div class="col-12">
-        <button type="button" (click)="onCheckoutClick()" class="btn btn-primary position-relative">
-          Checkout <span
-            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">{{numberItens}}
-            <span class="visually-hidden">Itens</span></span>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Launch demo modal
         </button>
       </div>
     </div>
   </div>
+  <app-proceed-checkout-modal></app-proceed-checkout-modal>
   <table class="table table-success table-borderless">
     <tbody>
       <div class="container">

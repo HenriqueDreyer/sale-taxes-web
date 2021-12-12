@@ -11,13 +11,15 @@ import { productReducer } from './state/product.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ExportProductEffects } from './state/product.effects';
 import { ProductService } from './service/product.service';
+import { ProceedCheckoutModalComponent } from './checkout/proceed-checkout-modal/proceed-checkout-modal.component';
 
 @NgModule({
   declarations: [
     ProductListComponent,
     CheckoutComponent,
     ProductItemComponent,
-    CheckoutItemComponent
+    CheckoutItemComponent,
+    ProceedCheckoutModalComponent
   ],
   exports: [
     ProductListComponent,
