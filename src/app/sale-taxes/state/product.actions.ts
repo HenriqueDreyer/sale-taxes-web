@@ -13,13 +13,11 @@ export const addProductToCartSuccess = createAction(
 );
 
 export const removeProductsToCart = createAction(
-  ACTION.REMOVE_PRODUCT_CART,
-  props<{ index: number }>()
+  ACTION.REMOVE_PRODUCT_CART
 );
 
 export const removeProductsToCartSuccess = createAction(
-  ACTION.REMOVE_PRODUCT_CART_SUCCESS,
-  props<{ index: number }>()
+  ACTION.REMOVE_PRODUCT_CART_SUCCESS
 );
 
 export const findProductsList = createAction(

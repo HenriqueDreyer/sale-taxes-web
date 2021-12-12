@@ -52,7 +52,7 @@ export class ExportProductEffects {
       this.actions$.pipe(
         ofType(PRODUCT_ACTIONS.removeProductsToCart),
         switchMap((action) =>
-          of(PRODUCT_ACTIONS.removeProductsToCartSuccess({ index: action.index }))
+          of(PRODUCT_ACTIONS.removeProductsToCartSuccess())
         )
       )
   );

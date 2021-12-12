@@ -22,7 +22,7 @@ const reducer = createReducer(
   })),
   on(PRODUCT_ACTIONS.removeProductsToCartSuccess, (state, action) => ({
     ...state,
-    myCart: state.myCart.filter((value, index) =>{ index !== action.index })
+    myCart: initialState.myCart
   }))
 );
 
