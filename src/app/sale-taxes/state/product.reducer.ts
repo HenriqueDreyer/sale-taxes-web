@@ -34,7 +34,7 @@ const reducer = createReducer(
   })),
   on(PRODUCT_ACTIONS.addItemToCheckoutSuccess, (state, action) => ({
     ...state,
-    checkout: [...state.checkout, action.product]
+    checkout: action.product
   })),
 );
 
