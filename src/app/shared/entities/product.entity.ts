@@ -3,18 +3,12 @@ export interface Product {
   name: string;
   description: string;
   price: number;
-  productType: ProductType;
-  isImported: string;
-}
-
-export interface ProceedProduct {
-  id: number;
-  name: string;
-  price: number;
-  isImported: string;
   basicTax: number;
   additionalTax: number;
-  total: number;
+  productType: ProductType;
+  isImported: string;
+  totalTaxes: number;
+  totalPrice: number;
 }
 
 export enum ProductType {
