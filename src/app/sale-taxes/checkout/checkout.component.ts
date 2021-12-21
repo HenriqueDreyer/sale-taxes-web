@@ -32,7 +32,7 @@ export class CheckoutComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   onCheckoutClick(): void {
-    console.log('FINALIZAR');
+    this.store.dispatch(PRODUCT_ACTIONS.addItemToCheckout({ product: this.cartItens }));
   }
 
   clean(): void {

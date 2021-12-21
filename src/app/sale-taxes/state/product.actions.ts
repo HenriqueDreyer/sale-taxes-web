@@ -1,6 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { ACTION } from "src/app/shared/constants/constants";
-import { ProceedProduct, Product } from "src/app/shared/entities/product.entity";
+import { Product } from "src/app/shared/entities/product.entity";
 
 export const addProductToCart = createAction(
   ACTION.ADD_PRODUCT_CART,
@@ -37,12 +37,12 @@ export const findProductsListError = createAction(
 
 export const loadCheckout = createAction(
   ACTION.LOAD_CHECKOUT,
-  props<{ products: ProceedProduct[] }>()
+  props<{ products: Product[] }>()
 );
 
 export const loadCheckoutSuccess = createAction(
   ACTION.LOAD_CHECKOUT_SUCCESS,
-  props<{ products: ProceedProduct[] }>()
+  props<{ products: Product[] }>()
 );
 
 export const removeCheckout = createAction(
@@ -55,12 +55,12 @@ export const removeCheckoutSuccess = createAction(
 
 export const addItemToCheckout = createAction(
   ACTION.ADD_CHECKOUT,
-  props<{ product: ProceedProduct }>()
+  props<{ product: Product[] }>()
 );
 
 export const addItemToCheckoutSuccess = createAction(
   ACTION.ADD_CHECKOUT_SUCCESS,
-  props<{ product: ProceedProduct }>()
+  props<{ product: Product[] }>()
 );
 
 export const PRODUCT_ACTIONS = {

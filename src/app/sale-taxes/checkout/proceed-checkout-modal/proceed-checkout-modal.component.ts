@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { ProceedProduct, Product, ProductType } from 'src/app/shared/entities/product.entity';
+import { Product, ProductType } from 'src/app/shared/entities/product.entity';
 import { AppState } from '../../state/app.state';
 import { PRODUCT_ACTIONS } from '../../state/product.actions';
 import { selectCheckout, selectMyCart } from '../../state/product.selectors';
@@ -12,7 +12,7 @@ import { selectCheckout, selectMyCart } from '../../state/product.selectors';
   styleUrls: ['./proceed-checkout-modal.component.scss']
 })
 export class ProceedCheckoutModalComponent implements OnInit, OnDestroy {
-  products: ProceedProduct[] = [];
+  products: Product[] = [];
   totalPay: number = 0.0;
   totalTax: number = 0.0;
 
@@ -29,7 +29,6 @@ export class ProceedCheckoutModalComponent implements OnInit, OnDestroy {
   }
 
   close(): void {
-    this.store.dispatch(PRODUCT_ACTIONS.removeProductsToCart());
     this.store.dispatch(PRODUCT_ACTIONS.removeCheckout());
     this.totalPay = 0.0;
     this.totalTax = 0.0;
@@ -39,7 +38,7 @@ export class ProceedCheckoutModalComponent implements OnInit, OnDestroy {
   private loadCartProductsFromStore(): void {
     const sub = this.store
       .pipe(select(selectCheckout))
-      .subscribe((source: ProceedProduct[]) => {
+      .subscribe((source: Product[]) => {
         if (source) {
           this.products = source;
           this.calculateTotal();
@@ -49,13 +48,14 @@ export class ProceedCheckoutModalComponent implements OnInit, OnDestroy {
   }
 
   private calculateTotal(): void {
-    let valueToPay = 0;
-    let valueTax = 0;
+    let valueToPay = 0.00;
+    let valueTax = 0.00;
     this.products.forEach((product) => {
-      valueToPay += product.total;
-      valueTax += product.basicTax + product.additionalTax;
+      valueToPay += product.totalPrice;
+      valueTax += product.totalTaxes;
     });
-    this.totalTax = Number((Math.ceil(valueTax*20)/20).toFixed(2));
+
+    this.totalTax = valueTax;
     this.totalPay = valueToPay;
   }
 
