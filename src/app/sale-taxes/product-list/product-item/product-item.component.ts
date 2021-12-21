@@ -20,7 +20,7 @@ export class ProductItemComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.productLocale = this.item.isImported == 'S'? 'Imported' : 'National';
+    this.productLocale = this.item.isImported === 'S'? 'Imported' : 'National';
   }
 
   ngOnDestroy(): void {
